@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Agrosha</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='Landing.css'>
+  <link rel="icon" href="images/favicon logo.png" type="image/x-icon">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bungee+Tint&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Playwrite+MX+Guides&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="hero">
+    <div class="hero-content">
+      <img src="images/favicon logo.png" alt="Agrosha Logo">
+      <h1>WELCOME</h1>
+      <p>Agrosha: Kheti ka naya daura 🌿</p>
+      <a href="Signupnew.html" class="btn"><b>Join Now</b></a>
+    </div>
+  </div>
+
+  <script>
+    (function () { if (!window.chatbase || window.chatbase("getState") !== "initialized") { window.chatbase = (...arguments) => { if (!window.chatbase.q) { window.chatbase.q = [] } window.chatbase.q.push(arguments) }; window.chatbase = new Proxy(window.chatbase, { get(target, prop) { if (prop === "q") { return target.q } return (...args) => target(prop, ...args) } }) } const onLoad = function () { const script = document.createElement("script"); script.src = "https://www.chatbase.co/embed.min.js"; script.id = "Wjn15dAVZ16c3xFe1_2uk"; script.domain = "www.chatbase.co"; document.body.appendChild(script) }; if (document.readyState === "complete") { onLoad() } else { window.addEventListener("load", onLoad) } })();
+  </script>
+
+
+  <div id="loader">
+    <img src="images/favicon logo.png" alt="Agrosha Logo" class="logo">
+  </div>
+
+  <!-- Main Content -->
+  <div id="content" style="display: none;">
+    <a href="#" onclick="navigateWithLoader('loading.html')"></a>
+  </div>
+
+  <script>window.addEventListener("load", function () {
+      const loader = document.getElementById("loader");
+      const content = document.getElementById("content");
+
+      loader.classList.add("fade-out");
+
+      setTimeout(() => {
+        loader.style.display = "none";
+        content.style.display = "block";
+      }, 500);
+    });
+
+    function navigateWithLoader(url) {
+      const loader = document.getElementById("loader");
+      loader.classList.remove("fade-in");
+      loader.style.display = "flex";
+
+      setTimeout(() => {
+        window.location.href = url;
+      }, 500);
+    }</script>
+
+
+  <div id="google_translate_element"></div>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        {
+          pageLanguage: 'en',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        },
+        'google_translate_element'
+      );
+    }
+  </script>
+
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+  </script>
+</body>
+
+</html>

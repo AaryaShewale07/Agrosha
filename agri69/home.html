@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agrosha - Crop Yield Prediction</title>
+  <link rel="stylesheet" href="home.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="images/favicon logo.png" alt="Agrosha Logo">
+      <h1>Agrosha</h1>
+    </div>
+
+    
+    <nav>
+      <a href="home.html" style="color:white; text-decoration:none; margin-left:20px;">Home</a>
+      <a href="#about" style="color:white; text-decoration:none; margin-left:20px;">About</a>
+      <a href="#features" style="color:white; text-decoration:none; margin-left:20px;">Features</a>
+      <a href="dashboard.html" style="color:white; text-decoration:none; margin-left:20px;">Dashboard</a>
+      <a href="prediction.html" style="color:white; text-decoration:none; margin-left:20px;">Prediction</a>
+     
+  </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+
+      <h1 class="hero-heading">Smart Crop Yield Prediction</h1>
+      <p>Empowering farmers with accurate predictions using machine learning.</p>
+      <div style="text-align: center;">
+        <a href="#predict" class="btn">Try the Tool</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2>About Agrosha</h2>
+      <p>Agrosha is an intelligent platform that helps farmers predict crop yield by analyzing key factors such as
+        rainfall, fertilizers, and pesticide usage through advanced machine learning algorithms.</p>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <h2>Key Features</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>🌾 Yield Prediction</h3>
+          <p>Estimate crop yield based on real-time and historical data.</p>
+        </div>
+        <div class="feature-card">
+          <h3>☁ Weather Insights</h3>
+          <p>Incorporates rainfall and seasonal data to improve accuracy.</p>
+        </div>
+        <div class="feature-card">
+          <h3>💸Profit Estimation</h3>
+          <p>Smart estimations based on your input features.</p>
+        </div>
+        <div class="feature-card">
+          <h3>📊 Easy to Use</h3>
+          <p>Simple interface for farmers and agri-consultants alike.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prediction Call-To-Action -->
+  <section id="predict" class="cta">
+    <div class="container">
+      <h2>Ready to Predict Your Yield?</h2>
+      <a href="prediction.html" class="btn">Use Prediction Tool</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container">
+      <p><b> &copy; 2025 Agrosha | Built for smarter farming 🌱</b></p>
+    </div>
+  </footer>
+
+  <script>
+    (function () { if (!window.chatbase || window.chatbase("getState") !== "initialized") { window.chatbase = (...arguments) => { if (!window.chatbase.q) { window.chatbase.q = [] } window.chatbase.q.push(arguments) }; window.chatbase = new Proxy(window.chatbase, { get(target, prop) { if (prop === "q") { return target.q } return (...args) => target(prop, ...args) } }) } const onLoad = function () { const script = document.createElement("script"); script.src = "https://www.chatbase.co/embed.min.js"; script.id = "Wjn15dAVZ16c3xFe1_2uk"; script.domain = "www.chatbase.co"; document.body.appendChild(script) }; if (document.readyState === "complete") { onLoad() } else { window.addEventListener("load", onLoad) } })();
+  </script>
+
+
+  <div id="loader">
+    <img src="images/favicon logo.png" alt="Agrosha Logo" class="logo">
+  </div>
+
+  <!-- Main Content -->
+  <div id="content" style="display: none;">
+    <a href="#" onclick="navigateWithLoader('home.html')"></a>
+  </div>
+
+  <script>window.addEventListener("load", function () {
+      const loader = document.getElementById("loader");
+      const content = document.getElementById("content");
+
+      loader.classList.add("fade-out");
+
+      setTimeout(() => {
+        loader.style.display = "none";
+        content.style.display = "block";
+      }, 500);
+    });
+
+    function navigateWithLoader(url) {
+      const loader = document.getElementById("loader");
+      loader.classList.remove("fade-in");
+      loader.style.display = "flex";
+
+      setTimeout(() => {
+        window.location.href = url;
+      }, 500);
+    }</script>
+
+
+  <div id="google_translate_element"></div>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        {
+          pageLanguage: 'en',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        },
+        'google_translate_element'
+      );
+    }
+  </script>
+
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+  </script>
+
+</body>
+
+</html>

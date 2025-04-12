@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Agrosha</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='prediction.css'>
+    <link rel="icon" href="images/favicon logo.png" type="image/x-icon">
+</head>
+
+<body>
+    <script>
+        (function () { if (!window.chatbase || window.chatbase("getState") !== "initialized") { window.chatbase = (...arguments) => { if (!window.chatbase.q) { window.chatbase.q = [] } window.chatbase.q.push(arguments) }; window.chatbase = new Proxy(window.chatbase, { get(target, prop) { if (prop === "q") { return target.q } return (...args) => target(prop, ...args) } }) } const onLoad = function () { const script = document.createElement("script"); script.src = "https://www.chatbase.co/embed.min.js"; script.id = "Wjn15dAVZ16c3xFe1_2uk"; script.domain = "www.chatbase.co"; document.body.appendChild(script) }; if (document.readyState === "complete") { onLoad() } else { window.addEventListener("load", onLoad) } })();
+    </script>
+    <!-- Include jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+    <div class="sidebar">
+        <div class="logo">
+            <a href="home.html">
+                <img src="images/favicon logo.png" alt="Agrosha Logo">
+            </a>
+        </div>
+
+        <nav>
+            <h2>Main</h2>
+            <ul>
+                <li>
+                    <a href="dashboard.html"><img src="images/db icon.png" alt="Dashboard Icon"> Dashboard</a>
+                </li>
+                <li class="active">
+                    <a href="prediction.html"><img src="images/pred icon.png" alt="Predictions Icon"> Predictions</a>
+                </li>
+
+            </ul><br><br>
+
+            <h2>Settings</h2>
+            <ul>
+                <li>
+                    <a href="home.html"><img src="images/lp icon.png" alt="Home Icon"> Home</a>
+                </li>
+                <li>
+                    <a href="profile.html"><img src="images/prof icon.png" alt="Profile Icon"> Profile</a>
+                </li>
+                <li>
+                    <a href="review.html"><img src="images/fb icon.png" alt="Feedback Icon"> Feedback</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <div class="content">
+        <div class="top-bar">
+            <button type="submit" formaction="/download-pdf" formmethod="POST" class="download-btn">Download
+                Report</button>
+            <h1>Prediction</h1>
+
+        </div>
+
+        <h1 class="page-heading">Smart AI Crop Yield Prediction</h1>
+        <p class="subheading">Empowering farmers via AI & ML for smarter cultivation</p>
+
+        <div class="form-container">
+            <div id="error-container" style="display: none;" class="error-message"></div>
+
+            <form id="prediction-form" class="form-grid">
+                <div class="form-group">
+                    <label for="farmer-name">Farmer's Name</label>
+                    <input type="text" id="farmer-name" name="farmer_name" placeholder="Enter farmer's name">
+                </div>
+
+                <div class="form-group">
+                    <label for="year">Crop Year</label>
+                    <select id="year" name="crop_year" required>
+                        <option disabled selected>Select Year</option>
+                        <script>
+                            for (let year = 1997; year <= 2025; year++) {
+                                document.write(`<option value="${year}">${year}</option>`);
+                            }
+                        </script>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <select id="state" name="state" required>
+                        <option disabled selected>Select State</option>
+                        <option>Andhra Pradesh</option>
+                        <option>Arunachal Pradesh</option>
+                        <option>Assam</option>
+                        <option>Bihar</option>
+                        <option>Chhattisgarh</option>
+                        <option>Delhi</option>
+                        <option>Goa</option>
+                        <option>Gujarat</option>
+                        <option>Haryana</option>
+                        <option>Himachal Pradesh</option>
+                        <option>Jammu and Kashmir</option>
+                        <option>Jharkhand</option>
+                        <option>Karnataka</option>
+                        <option>Kerala</option>
+                        <option>Madhya Pradesh</option>
+                        <option>Maharashtra</option>
+                        <option>Manipur</option>
+                        <option>Meghalaya</option>
+                        <option>Mizoram</option>
+                        <option>Nagaland</option>
+                        <option>Odisha</option>
+                        <option>Puducherry</option>
+                        <option>Punjab</option>
+                        <option>Sikkim</option>
+                        <option>Tamil Nadu</option>
+                        <option>Telangana</option>
+                        <option>Tripura</option>
+                        <option>Uttar Pradesh</option>
+                        <option>Uttarakhand</option>
+                        <option>West Bengal</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="crop">Crop</label>
+                    <select id="crop" name="crop" required>
+                        <option disabled selected>Select Crop</option>
+                        <option>Arecanut</option>
+                        <option>Arhar/Tur</option>
+                        <option>Bajra</option>
+                        <option>Banana</option>
+                        <option>Barley</option>
+                        <option>Black pepper</option>
+                        <option>Cardamom</option>
+                        <option>Cashewnut</option>
+                        <option>Castor seed</option>
+                        <option>Coconut</option>
+                        <option>Coriander</option>
+                        <option>Cotton(lint)</option>
+                        <option>Cowpea(Lobia)</option>
+                        <option>Dry chillies</option>
+                        <option>Garlic</option>
+                        <option>Ginger</option>
+                        <option>Gram</option>
+                        <option>Groundnut</option>
+                        <option>Guar seed</option>
+                        <option>Horse-gram</option>
+                        <option>Jowar</option>
+                        <option>Jute</option>
+                        <option>Khesari</option>
+                        <option>Linseed</option>
+                        <option>Maize</option>
+                        <option>Masoor</option>
+                        <option>Mesta</option>
+                        <option>Moong (Green Gram)</option>
+                        <option>Moth</option>
+                        <option>Niger seed</option>
+                        <option>Oilseeds total</option>
+                        <option>Onion</option>
+                        <option>Other Rabi pulses</option>
+                        <option>Other Cereals</option>
+                        <option>Other Kharif pulses</option>
+                        <option>Other oilseeds</option>
+                        <option>Other Summer Pulses</option>
+                        <option>Peas & beans (Pulses)</option>
+                        <option>Potato</option>
+                        <option>Ragi</option>
+                        <option>Rapeseed & Mustard</option>
+                        <option>Rice</option>
+                        <option>Safflower</option>
+                        <option>Sannhamp</option>
+                        <option>Sesamum</option>
+                        <option>Small millets</option>
+                        <option>Soyabean</option>
+                        <option>Sugarcane</option>
+                        <option>Sunflower</option>
+                        <option>Sweet potato</option>
+                        <option>Tapioca</option>
+                        <option>Tobacco</option>
+                        <option>Turmeric</option>
+                        <option>Urad</option>
+                        <option>Wheat</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="season">Season</label>
+                    <select id="season" name="season" required>
+                        <option disabled selected>Select Season</option>
+                        <option>Summer</option>
+                        <option>Winter</option>
+                        <option>Monsoon</option>
+                        <option>Monsoon-Winter</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="area">Area (in hectares)</label>
+                    <input type="number" id="area" name="area" placeholder="Enter area in hectares" step="0.01"
+                        min="0.1" required>
+                </div>
+
+                <div class="btn-container full-width">
+                    <button type="button" id="predict-btn" class="btn-primary">Generate Prediction</button>
+                    <button type="reset" class="btn-secondary">Reset</button>
+                </div>
+            </form>
+
+            <div id="result-container" style="display: none;" class="result-box">
+                <h3>Predicted Yield: <span id="predicted-yield" style="color: #5ea535;"></span></h3>
+                <ul>
+                    <li><strong>Production:</strong> <span id="production"></span> tons</li>
+                    <li><strong>Annual Rainfall:</strong> <span id="rainfall"></span> mm</li>
+                    <li><strong>Fertilizer:</strong> <span id="fertilizer"></span> kg/hectare</li>
+                    <li><strong>Pesticide:</strong> <span id="pesticide"></span> kg/hectare</li>
+                    <li><strong>Price per Ton:</strong> ₹<span id="price-per-ton"></span></li>
+                    <li><strong>Investment:</strong> ₹<span id="investment"></span></li>
+                    <li><strong>Profit:</strong> ₹<span id="profit"></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Crop prices dictionary
+        const CROP_PRICES = {
+            'Arecanut': 20000,
+            'Arhar/Tur': 46000,
+            'Bajra': 20000,
+            'Banana': 8000,
+            'Barley': 19000,
+            'Black pepper': 20000,
+            'Cardamom': 20000,
+            'Cashewnut': 20000,
+            'Castor seed': 20000,
+            'Coconut': 20000,
+            'Coriander': 20000,
+            'Cotton(lint)': 45000,
+            'Cowpea(Lobia)': 20000,
+            'Dry chillies': 20000,
+            'Garlic': 60000,
+            'Ginger': 55000,
+            'Gram': 50000,
+            'Groundnut': 42000,
+            'Guar seed': 20000,
+            'Horse-gram': 20000,
+            'Jowar': 20000,
+            'Jute': 35000,
+            'Khesari': 20000,
+            'Linseed': 20000,
+            'Maize': 18000,
+            'Masoor': 20000,
+            'Mesta': 20000,
+            'Moong (Green Gram)': 48000,
+            'Moth': 20000,
+            'Niger seed': 20000,
+            'Oilseeds total': 20000,
+            'Onion': 7000,
+            'Other Rabi pulses': 20000,
+            'Other Cereals': 20000,
+            'Other Kharif pulses': 20000,
+            'Other oilseeds': 20000,
+            'Other Summer Pulses': 20000,
+            'Peas & beans (Pulses)': 20000,
+            'Potato': 6000,
+            'Ragi': 20000,
+            'Rapeseed & Mustard': 20000,
+            'Rice': 21000,
+            'Safflower': 20000,
+            'Sannhamp': 20000,
+            'Sesamum': 20000,
+            'Small millets': 20000,
+            'Soyabean': 40000,
+            'Sugarcane': 3000,
+            'Sunflower': 20000,
+            'Sweet potato': 20000,
+            'Tapioca': 20000,
+            'Tobacco': 20000,
+            'Turmeric': 90000,
+            'Urad': 47000,
+            'Wheat': 22000
+        };
+
+        // Prediction function (based on provided data)
+        function predictCropYield(crop, year, state, season, area) {
+            // Base yields for various crops
+            const baseYields = {
+                'Arecanut': 2.8,
+                'Arhar/Tur': 0.9,
+                'Bajra': 1.2,
+                'Banana': 22.0,
+                'Barley': 2.5,
+                'Black pepper': 0.5,
+                'Cardamom': 0.3,
+                'Cashewnut': 0.8,
+                'Castor seed': 1.0,
+                'Coconut': 10000.0, // nuts per hectare
+                'Coriander': 0.8,
+                'Cotton(lint)': 0.5,
+                'Cowpea(Lobia)': 0.7,
+                'Dry chillies': 1.5,
+                'Garlic': 5.0,
+                'Ginger': 4.0,
+                'Gram': 1.0,
+                'Groundnut': 1.2,
+                'Guar seed': 0.8,
+                'Horse-gram': 0.6,
+                'Jowar': 1.0,
+                'Jute': 2.5,
+                'Khesari': 0.7,
+                'Linseed': 0.6,
+                'Maize': 3.0,
+                'Masoor': 0.8,
+                'Mesta': 1.5,
+                'Moong (Green Gram)': 0.7,
+                'Moth': 0.5,
+                'Niger seed': 0.4,
+                'Oilseeds total': 1.0,
+                'Onion': 15.0,
+                'Other Rabi pulses': 0.8,
+                'Other Cereals': 1.2,
+                'Other Kharif pulses': 0.8,
+                'Other oilseeds': 0.9,
+                'Other Summer Pulses': 0.7,
+                'Peas & beans (Pulses)': 1.0,
+                'Potato': 20.0,
+                'Ragi': 1.5,
+                'Rapeseed & Mustard': 1.1,
+                'Rice': 2.8,
+                'Safflower': 0.7,
+                'Sannhamp': 1.0,
+                'Sesamum': 0.4,
+                'Small millets': 0.8,
+                'Soyabean': 1.3,
+                'Sugarcane': 70.0,
+                'Sunflower': 0.8,
+                'Sweet potato': 10.0,
+                'Tapioca': 25.0,
+                'Tobacco': 1.7,
+                'Turmeric': 5.0,
+                'Urad': 0.6,
+                'Wheat': 3.2
+            };
+
+            // Rainfall by season
+            const rainfallMap = {
+                'Summer': 800,
+                'Winter': 200,
+                'Monsoon': 1500,
+                'Monsoon-Winter': 900
+            };
+
+            // State productivity multipliers
+            const stateMultipliers = {
+                'Punjab': 1.2,
+                'Uttar Pradesh': 1.05,
+                'Maharashtra': 0.95,
+                'Karnataka': 1.1,
+                'Tamil Nadu': 1.08,
+                'Andhra Pradesh': 1.03,
+                'Gujarat': 0.97,
+                'Haryana': 1.15,
+                'Madhya Pradesh': 0.92,
+                'West Bengal': 1.1,
+                'Bihar': 0.9,
+                'Rajasthan': 0.85,
+                'Odisha': 0.93,
+                'Kerala': 1.05,
+                'Telangana': 1.0
+            };
+
+            // Default multiplier if state not listed
+            const stateMultiplier = stateMultipliers[state] || 1.0;
+
+            // Base values
+            const baseYield = baseYields[crop] || 1.0;
+            const yearFactor = Math.min(1.2, Math.max(0.8, (year - 1997) / 50 + 1));  // Slight increase over years
+
+            // Calculate predicted yield
+            const predictedYield = baseYield * stateMultiplier * yearFactor;
+            const rainfall = rainfallMap[season] || 800;
+
+            // Crop categories for fertilizer and pesticide recommendations
+            const cropCategories = {
+                'cereals': ['Rice', 'Wheat', 'Maize', 'Bajra', 'Jowar', 'Barley', 'Ragi', 'Small millets', 'Other Cereals'],
+                'pulses': ['Arhar/Tur', 'Gram', 'Moong (Green Gram)', 'Urad', 'Masoor', 'Other Kharif pulses', 'Other Rabi pulses', 'Other Summer Pulses', 'Peas & beans (Pulses)', 'Cowpea(Lobia)', 'Horse-gram', 'Khesari', 'Moth'],
+                'oilseeds': ['Groundnut', 'Sesamum', 'Rapeseed & Mustard', 'Linseed', 'Castor seed', 'Safflower', 'Niger seed', 'Soyabean', 'Sunflower', 'Other oilseeds', 'Oilseeds total'],
+                'vegetables': ['Potato', 'Onion', 'Tapioca', 'Sweet potato', 'Garlic'],
+                'spices': ['Ginger', 'Turmeric', 'Dry chillies', 'Black pepper', 'Cardamom', 'Coriander'],
+                'commercial': ['Cotton(lint)', 'Jute', 'Sugarcane', 'Tobacco', 'Mesta', 'Sannhamp'],
+                'fruits': ['Banana', 'Coconut', 'Arecanut', 'Cashewnut']
+            };
+
+            // Determine crop category
+            let cropCategory = null;
+            for (const [category, crops] of Object.entries(cropCategories)) {
+                if (crops.includes(crop)) {
+                    cropCategory = category;
+                    break;
+                }
+            }
+
+            // Default fertilizer and pesticide values
+            let fertilizer = 100;
+            let pesticide = 1.0;
+
+            // Adjust based on category
+            if (cropCategory === 'cereals') {
+                fertilizer = 120 * stateMultiplier;
+                pesticide = 1.2 * stateMultiplier;
+            } else if (cropCategory === 'pulses') {
+                fertilizer = 60 * stateMultiplier;
+                pesticide = 1.0 * stateMultiplier;
+            } else if (cropCategory === 'oilseeds') {
+                fertilizer = 80 * stateMultiplier;
+                pesticide = 1.5 * stateMultiplier;
+            } else if (cropCategory === 'vegetables') {
+                fertilizer = 200 * stateMultiplier;
+                pesticide = 2.0 * stateMultiplier;
+            } else if (cropCategory === 'spices') {
+                fertilizer = 150 * stateMultiplier;
+                pesticide = 2.5 * stateMultiplier;
+            } else if (cropCategory === 'commercial') {
+                fertilizer = 180 * stateMultiplier;
+                pesticide = 3.0 * stateMultiplier;
+            } else if (cropCategory === 'fruits') {
+                fertilizer = 250 * stateMultiplier;
+                pesticide = 2.0 * stateMultiplier;
+            }
+
+            // Calculate production
+            const production = predictedYield * area;
+
+            return {
+                yield: predictedYield,
+                production: production,
+                rainfall: rainfall,
+                fertilizer: fertilizer,
+                pesticide: pesticide
+            };
+        }
+
+        // Event listener for the predict button
+        document.getElementById('predict-btn').addEventListener('click', function () {
+            try {
+                // Get form values
+                const year = parseInt(document.getElementById('year').value);
+                const state = document.getElementById('state').value;
+                const season = document.getElementById('season').value;
+                const crop = document.getElementById('crop').value;
+                const area = parseFloat(document.getElementById('area').value);
+
+                // Validate inputs
+                if (isNaN(year) || isNaN(area) || !state || !season || !crop) {
+                    throw new Error("Please fill all the required fields");
+                }
+
+                if (area <= 0) {
+                    throw new Error("Area must be greater than 0");
+                }
+
+                // Hide any previous error
+                document.getElementById('error-container').style.display = 'none';
+
+                // Get prediction
+                const prediction = predictCropYield(crop, year, state, season, area);
+
+                // Get price per ton
+                const pricePerTon = CROP_PRICES[crop] || 10000;
+
+                // Calculate investment and profit
+                const fertilizerCost = prediction.fertilizer * 20;  // ₹20 per kg of fertilizer
+                const pesticideCost = prediction.pesticide * 300;   // ₹300 per kg of pesticide
+                const laborCost = 3000;  // ₹3000 fixed labor cost per hectare
+
+                const investmentPerHectare = fertilizerCost + pesticideCost + laborCost;
+                const investment = area * investmentPerHectare;
+                const profit = (prediction.yield * area * pricePerTon) - investment;
+
+                // Update result display
+                document.getElementById('predicted-yield').textContent = prediction.yield.toFixed(2) + " tons/hectare";
+                document.getElementById('production').textContent = prediction.production.toFixed(2);
+                document.getElementById('rainfall').textContent = prediction.rainfall.toFixed(0);
+                document.getElementById('fertilizer').textContent = prediction.fertilizer.toFixed(2);
+                document.getElementById('pesticide').textContent = prediction.pesticide.toFixed(2);
+                document.getElementById('price-per-ton').textContent = pricePerTon.toFixed(2);
+                document.getElementById('investment').textContent = investment.toFixed(2);
+                document.getElementById('profit').textContent = profit.toFixed(2);
+
+                // Show result container
+                document.getElementById('result-container').style.display = 'block';
+
+            } catch (error) {
+                // Display error
+                const errorContainer = document.getElementById('error-container');
+                errorContainer.textContent = error.message;
+                errorContainer.style.display = 'block';
+
+                // Hide results if any
+                document.getElementById('result-container').style.display = 'none';
+            }
+        });
+
+        // Reset button event listener - clear results when form is reset
+        document.querySelector('button[type="reset"]').addEventListener('click', function () {
+            document.getElementById('result-container').style.display = 'none';
+            document.getElementById('error-container').style.display = 'none';
+        });
+
+        // Function to generate and download the PDF
+        document.querySelector('.download-btn').addEventListener('click', async function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            try {
+                // Get prediction results
+                const cropName = document.getElementById('crop').value;
+                const cropSeason = document.getElementById('season').value;
+                const cropState = document.getElementById('state').value;
+                const cropYear = document.getElementById('year');
+                const farmerName = document.getElementById('farmer-name').value;
+                const predictedYield = document.getElementById('predicted-yield').textContent;
+                const production = document.getElementById('production').textContent;
+                const rainfall = document.getElementById('rainfall').textContent;
+                const fertilizer = document.getElementById('fertilizer').textContent;
+                const pesticide = document.getElementById('pesticide').textContent;
+                const pricePerTon = document.getElementById('price-per-ton').textContent;
+                const investment = document.getElementById('investment').textContent;
+                const profit = document.getElementById('profit').textContent;
+
+                // Import jsPDF
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+
+                // Add content to the PDF
+                doc.setFontSize(16);
+                doc.text("Smart AI Crop Yield Prediction Report", 10, 10);
+                doc.setFontSize(12);
+                doc.text(`Farmer's Name: ${farmerName}`, 10, 30);
+                doc.text(`Crop: ${cropName}`, 10, 40);
+                doc.text(`Crop Year: ${cropYear.value}`, 10, 50);
+                doc.text(`State: ${cropState}`, 10, 60);
+                doc.text(`Season: ${cropSeason}`, 10, 70);
+                doc.text(`Predicted Yield: ${predictedYield}`, 10, 80);
+                doc.text(`Production: ${production} tons`, 10, 90);
+                doc.text(`Annual Rainfall: ${rainfall} mm`, 10, 100);
+                doc.text(`Fertilizer: ${fertilizer} kg/hectare`, 10, 110);
+                doc.text(`Pesticide: ${pesticide} kg/hectare`, 10, 120);
+                doc.text(`Price per Ton: ₹${pricePerTon}`, 10, 130);
+                doc.text(`Investment: ₹${investment}`, 10, 140);
+                doc.text(`Profit: ₹${profit}`, 10, 150);
+
+                // Save the PDF
+                doc.save("Crop_Yield_Prediction_Report.pdf");
+            } catch (error) {
+                alert("Error generating PDF: " + error.message);
+            }
+        });
+    </script>
+
+
+    <script>
+        (function () { if (!window.chatbase || window.chatbase("getState") !== "initialized") { window.chatbase = (...arguments) => { if (!window.chatbase.q) { window.chatbase.q = [] } window.chatbase.q.push(arguments) }; window.chatbase = new Proxy(window.chatbase, { get(target, prop) { if (prop === "q") { return target.q } return (...args) => target(prop, ...args) } }) } const onLoad = function () { const script = document.createElement("script"); script.src = "https://www.chatbase.co/embed.min.js"; script.id = "Wjn15dAVZ16c3xFe1_2uk"; script.domain = "www.chatbase.co"; document.body.appendChild(script) }; if (document.readyState === "complete") { onLoad() } else { window.addEventListener("load", onLoad) } })();
+    </script>
+
+
+    <div id="loader">
+        <img src="images/favicon logo.png" alt="Agrosha Logo" class="logo">
+    </div>
+
+    <!-- Main Content -->
+    <div id="content" style="display: none;">
+        <a href="#" onclick="navigateWithLoader('prediction.html')"></a>
+    </div>
+
+    <script>window.addEventListener("load", function () {
+            const loader = document.getElementById("loader");
+            const content = document.getElementById("content");
+
+            loader.classList.add("fade-out");
+
+            setTimeout(() => {
+                loader.style.display = "none";
+                content.style.display = "block";
+            }, 500);
+        });
+
+        function navigateWithLoader(url) {
+            const loader = document.getElementById("loader");
+            loader.classList.remove("fade-in");
+            loader.style.display = "flex";
+
+            setTimeout(() => {
+                window.location.href = url;
+            }, 500);
+        }</script>
+
+
+
+    <div id="google_translate_element"></div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {
+                    pageLanguage: 'en',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    </script>
+
+</body>
+
+</html>
+```

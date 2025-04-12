@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Agrosha</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='dashboard.css'>
+    <link rel="icon" href="images/favicon logo.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <a href="home.html">
+                <img src="images/favicon logo.png" alt="Agrosha Logo">
+            </a>
+        </div>
+        <nav>
+            <h2>Main</h2>
+            <ul>
+                <li class="active">
+                    <a href="dashboard.html"><img src="images/db icon.png" alt="Dashboard Icon"> Dashboard</a>
+                </li>
+                <li>
+                    <a href="prediction.html"><img src="images/pred icon.png" alt="Predictions Icon"> Predictions</a>
+                </li>
+
+            </ul><br><br>
+
+            <h2>Settings</h2>
+            <ul>
+                <li>
+                    <a href="home.html"><img src="images/lp icon.png" alt="Home Icon"> Home</a>
+                </li>
+                <li>
+                    <a href="profile.html"><img src="images/prof icon.png" alt="Profile Icon"> Profile</a>
+                </li>
+                <li>
+                    <a href="review.html"><img src="images/fb icon.png" alt="Feedback Icon"> Feedback</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1 style="text-align: right;">Dashboard</h1>
+        </header>
+
+        <div class="frame">
+            <!-- Add your content inside the frame -->
+            <p>🌿&nbsp; Agrosha &nbsp; Analysis &nbsp;🌿</p>
+
+            <iframe title="CPA" width="1200" height="541.25"
+                src="https://app.powerbi.com/reportEmbed?reportId=c9af6808-e65f-4abe-9881-fa3109fbe9b5&autoAuth=true&ctid=14e27b4c-6038-4467-a415-d5077087d0db&config=eyJjbHVzdGVySWQiOiJjYjY2ZDU5ZC1mYzQ0LTRiY2ItOTI3My1lM2Q4N2E5ZTIxYjgiLCJwb3NpdGlvbklkIjoiMTc0ZjA4MjAtM2Q5Ny00ZWI5LWIwMDAtYzA3NTg0ZGIwNmQ4IiwicmVwb3J0SWQiOiJjOWFmNjgwOC1lNjVmLTRhYmUtOTg4MS1mYTMxMDlmYmU5YjUiLCJ0aWNrZXRJZCI6ImM5YWY2ODA4LWU2NWYtNGFiZS05ODgxLWZhMzEwOWZiZTliNSIsInRpbWV6b25lSWQiOiIxNTc3MjE1NzEifQ%3D%3D"
+                frameborder="0" allowFullScreen="true"></iframe>nIn=true
+        </div>
+    </div>
+
+    <script>
+        (function () { if (!window.chatbase || window.chatbase("getState") !== "initialized") { window.chatbase = (...arguments) => { if (!window.chatbase.q) { window.chatbase.q = [] } window.chatbase.q.push(arguments) }; window.chatbase = new Proxy(window.chatbase, { get(target, prop) { if (prop === "q") { return target.q } return (...args) => target(prop, ...args) } }) } const onLoad = function () { const script = document.createElement("script"); script.src = "https://www.chatbase.co/embed.min.js"; script.id = "Wjn15dAVZ16c3xFe1_2uk"; script.domain = "www.chatbase.co"; document.body.appendChild(script) }; if (document.readyState === "complete") { onLoad() } else { window.addEventListener("load", onLoad) } })();
+    </script>
+
+
+    <div id="loader">
+        <img src="images/favicon logo.png" alt="Agrosha Logo" class="logo">
+    </div>
+
+    <!-- Main Content -->
+    <div id="content" style="display: none;">
+        <a href="#" onclick="navigateWithLoader('dashboard.html')"></a>
+    </div>
+
+    <script>window.addEventListener("load", function () {
+            const loader = document.getElementById("loader");
+            const content = document.getElementById("content");
+
+            loader.classList.add("fade-out");
+
+            setTimeout(() => {
+                loader.style.display = "none";
+                content.style.display = "block";
+            }, 500);
+        });
+
+        function navigateWithLoader(url) {
+            const loader = document.getElementById("loader");
+            loader.classList.remove("fade-in");
+            loader.style.display = "flex";
+
+            setTimeout(() => {
+                window.location.href = url;
+            }, 500);
+        }</script>
+
+
+    <div id="google_translate_element"></div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {
+                    pageLanguage: 'en',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    </script>
+
+</body>
+
+</html>

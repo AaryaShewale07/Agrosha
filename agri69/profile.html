@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Agrosha</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/favicon logo.png" alt="Agrosha Logo">
+            <h1>Agrosha</h1>
+        </div>
+        <nav>
+
+            <a href="home.html" style="color:white; text-decoration:none; margin-left:20px;">Home</a>
+            <a href="dashboard.html" style="color:white; text-decoration:none; margin-left:20px;">Dashboard</a>
+            <a href="#" style="color:white; text-decoration:none; margin-left:20px;">Logout</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="profile-pic">
+            <img id="preview" src="images/favicon logo.png" alt="Profile Picture">
+            <a id="profilePic" name="profilePic"></a>
+        </div>
+        <form id="profileForm" enctype="multipart/form-data">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="username" placeholder="Enter your name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <button type="submit">Update Profile</button>
+        </form>
+    </div>
+
+    <script>
+        const profileForm = document.getElementById("profileForm");
+        const profilePicInput = document.getElementById("profilePic");
+        const preview = document.getElementById("preview");
+
+        // 📸 Show preview of selected image
+        profilePicInput.addEventListener("change", function () {
+            const file = this.files[0];
+            if (file) {
+                preview.src = URL.createObjectURL(file);
+            }
+        });
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        if (!user) {
+            window.location.href = "loginnew.html"; // agar login nahi kiya toh
+        } else {
+            document.getElementById("name").value = user.name || "";
+            document.getElementById("email").value = user.email || "";
+        }
+
+        // 🚀 Handle form submit
+        profileForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(profileForm);
+
+            try {
+                const response = await fetch("http://localhost:5000/api/profile", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    alert("Profile updated successfully!");
+                    console.log(result.data);
+                } else {
+                    alert("Something went wrong!");
+                }
+            } catch (error) {
+                console.error("Error submitting form:", error);
+                alert("Error updating profile.");
+            }
+        });
+
+        // 🔓 Logout functionality
+        document.querySelector("nav a:last-child").addEventListener("click", function (e) {
+            e.preventDefault(); // link ke default behavior ko rokna
+            localStorage.removeItem("user");  // user data clear
+            // localStorage.removeItem("token"); // agar token store kiya hai toh yeh bhi
+            window.location.href = "Landing.html"; // redirect to login
+        });
+
+    </script>
+
+    <script>
+        (function () { if (!window.chatbase || window.chatbase("getState") !== "initialized") { window.chatbase = (...arguments) => { if (!window.chatbase.q) { window.chatbase.q = [] } window.chatbase.q.push(arguments) }; window.chatbase = new Proxy(window.chatbase, { get(target, prop) { if (prop === "q") { return target.q } return (...args) => target(prop, ...args) } }) } const onLoad = function () { const script = document.createElement("script"); script.src = "https://www.chatbase.co/embed.min.js"; script.id = "Wjn15dAVZ16c3xFe1_2uk"; script.domain = "www.chatbase.co"; document.body.appendChild(script) }; if (document.readyState === "complete") { onLoad() } else { window.addEventListener("load", onLoad) } })();
+    </script>
+
+
+    <div id="loader">
+        <img src="images/favicon logo.png" alt="Agrosha Logo" class="logo">
+    </div>
+
+    <!-- Main Content -->
+    <div id="content" style="display: none;">
+        <a href="#" onclick="navigateWithLoader('prof.html')"></a>
+    </div>
+
+    <script>window.addEventListener("load", function () {
+            const loader = document.getElementById("loader");
+            const content = document.getElementById("content");
+
+            loader.classList.add("fade-out");
+
+            setTimeout(() => {
+                loader.style.display = "none";
+                content.style.display = "block";
+            }, 500);
+        });
+
+        function navigateWithLoader(url) {
+            const loader = document.getElementById("loader");
+            loader.classList.remove("fade-in");
+            loader.style.display = "flex";
+
+            setTimeout(() => {
+                window.location.href = url;
+            }, 500);
+        }</script>
+
+
+    <div id="google_translate_element"></div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {
+                    pageLanguage: 'en',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    </script>
+
+</body>
+
+</html>

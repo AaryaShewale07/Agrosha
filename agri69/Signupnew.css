@@ -1,0 +1,118 @@
+/* Background */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to top, #c8e6c9, #ffffff);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.grass-bg {
+  background-image: url('grass.png'); /* Add a nice grass image */
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: cover;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Card */
+.signup-card {
+  background: rgba(255, 255, 255, 0.97);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 100, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.signup-card h2 {
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.signup-card p {
+  margin-bottom: 25px;
+  color: #4CAF50;
+}
+
+/* Inputs */
+.signup-card input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+/* Button */
+.signup-card button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.signup-card button:hover {
+  background-color: #388e3c;
+}
+
+/* Footer Link */
+.footer {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.footer a {
+  color: #2e7d32;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Add floating leaves */
+.grass-bg::before {
+  content: "";
+  background-image: url('leaves.png'); /* Add leaves or small plant image */
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+
+.goog-te-banner-frame, 
+.goog-logo-link, 
+.goog-te-gadget span {
+  display: none !important;
+}
+
+body {
+  top: 0px !important;
+}
+
+.goog-te-gadget {
+  color: transparent;
+}
+
+.goog-te-combo {
+  color: black !important;
+}
